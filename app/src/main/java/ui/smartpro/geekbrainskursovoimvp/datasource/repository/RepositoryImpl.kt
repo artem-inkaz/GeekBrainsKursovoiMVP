@@ -1,9 +1,11 @@
 package ui.smartpro.geekbrainskursovoimvp.datasource.repository
 
+import androidx.databinding.ObservableList
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import ui.smartpro.geekbrainskursovoimvp.data.*
+import ui.smartpro.geekbrainskursovoimvp.data.model.CityBike
 import ui.smartpro.geekbrainskursovoimvp.datasource.datafromapi.DataFromApi
 import ui.smartpro.geekbrainskursovoimvp.datasource.datafromcash.CashData
 import javax.inject.Inject
@@ -12,16 +14,24 @@ class RepositoryImpl  @Inject constructor(
         private val api: DataFromApi,
         private val cache: CashData
 ):Repository  {
-    override fun getCityBikes(): Observable<Response> =
+    override fun getCityBikes(): Observable<List<NetworksItem?>?> =
  //           Observable.merge(
  //                   cache.getAllItems(),
                     api
                         .getCityBikes()
+                        .map { it.networks }
+//                        .map { response -> response.networks!!.map(CityBike.Mapper::map) }
 //                        .flatMap { items ->
 //                            cache.rewriteItemsListIntoDB(items)
 //                        }
                         .toObservable()
 //            )
+
+    ////                        .map { it.networks }
+    ////                        .map { users -> users.map(CityBike.Mapper::map) }
+    //                        .map { response -> response.networks!!.map(CityBike.Mapper::map) }
+
+
 
     override fun getCityBikeId(id: String): Single<Network> {
         TODO("Not yet implemented")

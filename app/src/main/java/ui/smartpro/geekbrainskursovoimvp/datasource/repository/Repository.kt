@@ -1,5 +1,6 @@
 package ui.smartpro.geekbrainskursovoimvp.datasource.repository
 
+import androidx.databinding.ObservableList
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Observable
@@ -8,7 +9,7 @@ import ui.smartpro.geekbrainskursovoimvp.data.*
 
 interface Repository {
 
-    fun getCityBikes(): Observable<Response>
+    fun getCityBikes(): Observable<List<NetworksItem?>?>
 
     fun getCityBikeId(id: String): Single<Network>
 
