@@ -13,8 +13,8 @@ data class Network(
 	@SerializedName("name")
 	val name: String? = null,
 
-//	@SerializedName("company")
-//	val company: List<String?>? = null,
+	@SerializedName("company")
+	val company: List<String?>? = null,
 
 	@SerializedName("location")
 	val location: Location? = null,
@@ -28,6 +28,7 @@ data class Network(
 	@SerializedName("stations")
 	val stations: List<StationsItem?>? = null
 )
+
 data class StationsItem(
 
 	@SerializedName("free_bikes")

@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import ui.smartpro.geekbrainskursovoimvp.data.model.CityBike
 
 @Entity(tableName = "city_bike")
 data class NetworksItemEntity(
@@ -48,4 +49,20 @@ data class NetworksItemEntity(
 //		val latLng: LatLng
 //		get() = LatLng(latitude, longitude)
 //}
+{
+	object Mapper {
 
+		fun map(networksItem: NetworksItem?) =
+				NetworksItemEntity(
+						networksItem!!.id!!,
+						networksItem.name,
+                        "",
+						networksItem.location!!.country!!,
+						networksItem.location.city,
+						networksItem.location.latitude,
+						networksItem.location.longitude,
+						networksItem.source,
+						networksItem.href
+				)
+	}
+}

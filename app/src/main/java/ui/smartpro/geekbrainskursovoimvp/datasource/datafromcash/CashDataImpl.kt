@@ -1,8 +1,8 @@
 package ui.smartpro.geekbrainskursovoimvp.datasource.datafromcash
 
 import io.reactivex.Completable
-import io.reactivex.Maybe
 import io.reactivex.Observable
+import io.reactivex.Single
 import ui.smartpro.geekbrainskursovoimvp.data.*
 import ui.smartpro.geekbrainskursovoimvp.di.modules.InMemory
 import javax.inject.Inject
@@ -25,24 +25,43 @@ class CashDataImpl @Inject constructor(
 //                .andThen(getAllItems().firstOrError())
 
     /** del items and write new items data set again, include converter */
-    override fun rewriteItemsListIntoDB(networksItem: List<NetworksItem>): Observable<List<NetworksItemEntity>> =
+    override fun rewriteItemsListIntoDB(networksItem: List<NetworksItemEntity>): Single<List<NetworksItemEntity>>? =
 //        database.cityBikeDao.deleteAll()
         database
                 .cityBikeDao
-                .insertAll(networksItem.map { toItemEntity(it) })
-                .toObservable()
+//                .insertAll(networksItem.map { toItemEntity(it) })
+                .insertAll(networksItem)
+//                .toObservable()
+                .andThen(getAllItems().firstOrError())
 
     /** request items by item id */
-    override fun getItemById(id: String): Maybe<NetworkEntity> =
-        database
-                .bikeIdDao
-                .getBikeId(id).toMaybe()
+//    override fun getItemById(id: String): Maybe<NetworkEntity> =
+//        database
+//                .bikeIdDao
+//                .getBikeId(id).toMaybe()
+    override fun getItemById(id: String): Observable<List<NetworkEntity>> =
+            database
+                    .bikeIdDao
+                    .getBikeId(id)
+ //                   .toMaybe()
+
 
     /** add item by id data into db, include converter*/
-    override fun writeItemIdIntoDB(network: Network,itemId: String): Completable=
+//    override fun writeItemIdIntoDB(network: Network,itemId: String): Completable=
+//        database
+//                .bikeIdDao
+ //               .insert(toItemIdEntity(network,itemId))
+
+    override fun rewriteItemsStationsIntoDB(id: String,networkEntity: List<StationsItem>)
+    : Single<List<NetworkEntity>>? =
         database
                 .bikeIdDao
-                .insert(toItemIdEntity(network,itemId))
+                .insertAll(networkEntity.map { toItemIdEntity(id,it)})
+//                .insertAll(networksItem)
+//                .toObservable()
+                 .andThen(getItemById(id).firstOrError())
+ //               .andThen(Single.just(networksItem))
+//                  .andThen(Single.just(networksItem))
 
     /** converter items */
     private fun toItemEntity(networksItem: NetworksItem) = NetworksItemEntity(
@@ -58,60 +77,18 @@ class CashDataImpl @Inject constructor(
     )
 
     /** converter item by id */
-    private fun toItemIdEntity(network: Network,itemId: String) = NetworkEntity(
+    private fun toItemIdEntity(itemId: String, network: StationsItem) = NetworkEntity(
         id = network.id!!,
-        stationId = network.stations!![4]!!.id!!,
-        name = network.name,
-        freeBikes = network.stations[0]!!.freeBikes,
-        emptySlots = network.stations[5]!!.emptySlots,
-        timestamp = network.stations[7]!!.timestamp,
-        normalBikes = network.stations[1]!!.extra!!.normalBikes,
-        ebikes = network.stations[1]!!.extra!!.ebikes,
-        slots = network.stations[1]!!.extra!!.slots,
+        stationId = network.id!!,
+//        name = network.name,
+        freeBikes = network.freeBikes,
+        emptySlots = network.emptySlots,
+        timestamp = network.timestamp,
+        normalBikes = network.extra!!.normalBikes,
+        ebikes = network.extra!!.ebikes,
+        slots = network.extra!!.slots,
         shrefId = itemId
     )
 
-//    private fun toNetworksItemDomain(networksItemEntity: NetworksItemEntity) = NetworksItem(
-//        id = networksItemEntity.id.toInt(),
-//        stations[4].id = networksItemEntity.title,
-//        overview = networksItemEntity.overview,
-//        poster = networksItemEntity.poster,
-//        backdrop = networksItemEntity.backdrop,
-//        ratings = networksItemEntity.ratings,
-//        adult = networksItemEntity.adult,
-//        runtime = networksItemEntity.runtime,
-//        reviews = networksItemEntity.reviews,
-//        genres = networksItemEntity.genres.split(",").map { it.trim() },
-//        like = networksItemEntity.like
-//    )
 }
 
-//            network.id,
-//            network.stations!![4]!!.id,
-//            network.name,
-//            network.stations[0]!!.freeBikes,
-//            network.stations[5]!!.emptySlots,
-//            network.stations[7]!!.timestamp,
-//            network.stations[1]!!.extra!!.normalBikes,
-//            network.stations[1]!!.extra!!.ebikes,
-//            network.stations[1]!!.extra!!.slots
-
-//    val id: String? = null,
-//    val id_station: String? = null,
-//    val name: String? = null,
-//    val freeBikes: Int? = null,
-//    val emptySlots: Int? = null,
-//    val timestamp: String? = null,
-//    val normalBikes: Int? = null,
-//    val ebikes: Int? = null,
-//    val slots: Int? = null
-
-//	val id: String,
-//	val name: String? = null,
-//	val company: String,
-//	val country: String? = null,
-//	val city: String? = null,
-//	val latitude: Double? = null,
-//	val longitude: Double? = null,
-//	val source: String? = null,
-//	val href: String? = null

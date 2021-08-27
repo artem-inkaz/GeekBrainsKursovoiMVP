@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/ic_launcher"
     tools:context=".presentation.bikeitem.BikeItemFragment">
 
     <TextView
@@ -13,95 +13,37 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:text=""
-        tools:text="id"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="id" />
 
     <TextView
         android:id="@+id/id_station"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:text=""
-        tools:text="id_station"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_TV"/>
-
-    <TextView
-        android:id="@+id/name_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
-        android:text=""
-        tools:text="name"
         app:layout_constraintStart_toEndOf="@id/id_TV"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="id_station" />
 
-    <TextView
-        android:id="@+id/timestamp_TV"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="25dp"
-        android:text=""
-        tools:text="timestamp"
-        app:layout_constraintStart_toEndOf="@id/id_station"
-        app:layout_constraintTop_toBottomOf="@id/name_TV"/>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="141dp" />
 
-    <TextView
-        android:id="@+id/normalBikes_TV"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cityBikeDetail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="25dp"
-        android:text=""
-        tools:text="normalBikes"
-        app:layout_constraintStart_toEndOf="@id/timestamp_TV"
-        app:layout_constraintTop_toBottomOf="@id/freeBikes_TV"/>
 
-    <TextView
-        android:id="@+id/freeBikes_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="15dp"
-        android:text=""
-        tools:text="freeBikes_TV"
-        app:layout_constraintStart_toEndOf="@id/name_TV"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/emptySlots_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="15dp"
-        android:text=""
-        tools:text="emptySlots_TV"
-        app:layout_constraintStart_toEndOf="@id/freeBikes_TV"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/ebikes_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="68dp"
-        android:text=""
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timestamp_TV"
-        tools:text="ebikes_TV" />
-
-    <TextView
-        android:id="@+id/slots_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="25dp"
-        android:text=""
-        tools:text="slots_TV"
-        app:layout_constraintStart_toEndOf="@id/normalBikes_TV"
-        app:layout_constraintTop_toBottomOf="@id/emptySlots_TV"/>
+        android:background="@color/black"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/bike_detail"
+        app:layout_constraintTop_toTopOf="@id/guideline2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
