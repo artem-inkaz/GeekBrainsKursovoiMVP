@@ -15,8 +15,8 @@ import ui.smartpro.geekbrainskursovoimvp.scheduler.Schedulers
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class,ApiModule::class, StorageModule::class, UsersModule::class])
-interface ApplicationComponent:AndroidInjector<App>{
+@Component(modules = [AndroidInjectionModule::class, ApiModule::class, StorageModule::class, UsersModule::class])
+interface ApplicationComponent : AndroidInjector<App> {
 
     @Component.Builder
     interface Builder {
@@ -28,7 +28,7 @@ interface ApplicationComponent:AndroidInjector<App>{
         fun withRouter(router: Router): Builder
 
         @BindsInstance
-        fun withNavigationHolder(navigatorHolder: NavigatorHolder):Builder
+        fun withNavigationHolder(navigatorHolder: NavigatorHolder): Builder
 
         @BindsInstance
         fun withSchedulers(schedulers: Schedulers): Builder

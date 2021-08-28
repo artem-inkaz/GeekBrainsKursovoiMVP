@@ -11,7 +11,7 @@ import ui.smartpro.geekbrainskursovoimvp.scheduler.Schedulers
 class BikePresenter(
         private val bikeId: String,
         private val repository: Repository,
-        private val schedulers: Schedulers
+        private val schedulers: Schedulers,
 ) : MvpPresenter<BikeView>() {
 
     private val disposables = CompositeDisposable()
@@ -21,9 +21,6 @@ class BikePresenter(
                 repository
                         .getCityBikeId(bikeId)
                         .observeOn(schedulers.background())
-//                        .map(CityBikeId.Mapper::map)
-//                        .flatMap {  }
-//                        .map { users -> users.map(CityBikeId.Mapper::map) }
                         .observeOn(schedulers.main())
                         .subscribeOn(schedulers.background())
                         .subscribe(
@@ -37,6 +34,3 @@ class BikePresenter(
         disposables.clear()
     }
 }
-////                        .map { it.networks }
-//                        .map { users -> users.map(CityBike.Mapper::map) }
-////                        .map { response -> response.networks!!.map(CityBike.Mapper::map) }

@@ -12,7 +12,8 @@ import ui.smartpro.geekbrainskursovoimvp.datasource.repository.RepositoryImpl
 import ui.smartpro.geekbrainskursovoimvp.presentation.abs.MainActivity
 import ui.smartpro.geekbrainskursovoimvp.presentation.bikeitem.BikeItemFragment
 import ui.smartpro.geekbrainskursovoimvp.presentation.citybikes.CityBikesFragment
-import uui.smartpro.geekbrainskursovoimvp.network.NetworkStateObservable
+import ui.smartpro.geekbrainskursovoimvp.source.Source
+import ui.smartpro.geekbrainskursovoimvp.source.SourceImpl
 import javax.inject.Singleton
 
 @Module
@@ -34,4 +35,7 @@ interface UsersModule {
     fun bindDataFromApi(dataSource: DataFromApiImpl): DataFromApi
     @Binds
     fun bindCashData(cashUserDataSource: CashDataImpl):CashData
+
+    @Binds
+    fun bindSource(cashUserDataSource: SourceImpl): Source
 }

@@ -8,7 +8,6 @@ import com.github.terrakok.cicerone.androidx.AppNavigator
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
-import ui.smartpro.geekbrainskursovoimvp.R
 import ui.smartpro.geekbrainskursovoimvp.network.NetworkState
 import ui.smartpro.geekbrainskursovoimvp.presentation.citybikes.BikesScreen
 import uui.smartpro.geekbrainskursovoimvp.network.NetworkStateObservable
@@ -39,15 +38,15 @@ class MainActivity : AbsActivity() {
         savedInstanceState ?: router.newRootScreen(BikesScreen)
 
         val connect =
-            NetworkStateObservable(this)
-                .doOnNext { onNext(0, it) }
-                .publish()
+                NetworkStateObservable(this)
+                        .doOnNext { onNext(0, it) }
+                        .publish()
 
         connect.connect()
 
         disposables +=
-            connect.delay(20L, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-                .subscribe { onNext(1, it) }
+                connect.delay(20L, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+                        .subscribe { onNext(1, it) }
     }
 
     private fun onNext(no: Int, state: NetworkState) {

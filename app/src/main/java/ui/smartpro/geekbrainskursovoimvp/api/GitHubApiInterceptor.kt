@@ -6,9 +6,9 @@ import okhttp3.Response
 object GitHubApiInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response =
-        chain.proceed(
-            chain.request()
-                .newBuilder()
-                .build()
-        )
+            chain.proceed(
+                    chain.request()
+                            .newBuilder()
+                            .build()
+            )
 }

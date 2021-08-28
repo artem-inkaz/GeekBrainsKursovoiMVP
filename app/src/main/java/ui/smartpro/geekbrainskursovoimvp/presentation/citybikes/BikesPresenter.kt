@@ -2,6 +2,7 @@ package ui.smartpro.geekbrainskursovoimvp.presentation.citybikes
 
 import com.github.terrakok.cicerone.Router
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.cast
 import io.reactivex.rxkotlin.plusAssign
 import moxy.MvpPresenter
 import ui.smartpro.geekbrainskursovoimvp.data.model.CityBike
@@ -22,9 +23,7 @@ class BikesPresenter(
                 bikeRepository
                         .getCityBikes()
                         .observeOn(schedulers.background())
-//                        .map { it.networks }
                         .map { users -> users.map(CityBike.Mapper::map) }
-//                        .map { response -> response.networks!!.map(CityBike.Mapper::map) }
                         .observeOn(schedulers.main())
                         .subscribeOn(schedulers.background())
                         .subscribe(
@@ -33,8 +32,25 @@ class BikesPresenter(
                         )
     }
 
+    fun filterSource() {
+        disposables +=
+                bikeRepository
+                        .filterSource()
+                        .observeOn(schedulers.background())
+                        .map { users -> users.map(CityBike.Mapper::filter) }
+                        .filter { items -> items.get(6).equals(null) }
+                        .cast<List<CityBike>>()
+                        .observeOn(schedulers.main())
+                        .subscribeOn(schedulers.background())
+                        .subscribe(
+                                viewState::showSourceBikes,
+                                viewState::showError
+                        )
+    }
+
+
     fun displayItemBike(bike: CityBike) {
-      router.navigateTo(BikeScreen(bike.id!!))
+        router.navigateTo(BikeScreen(bike.id!!))
     }
 
     override fun onDestroy() {

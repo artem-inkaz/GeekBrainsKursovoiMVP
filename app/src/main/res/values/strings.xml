@@ -2,4 +2,11 @@
     <string name="app_name">GeekBrainsKursovoiMVP</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="uid">Uid</string>
+    <string name="freebikes">Свободные вело</string>
+    <string name="emptyslots">Свобные места</string>
+    <string name="timestamp">Текущее время</string>
+    <string name="normalbikes">Обычные вело</string>
+    <string name="ebikes">Электро байк</string>
+    <string name="slots">Количество мест</string>
 </resources>
