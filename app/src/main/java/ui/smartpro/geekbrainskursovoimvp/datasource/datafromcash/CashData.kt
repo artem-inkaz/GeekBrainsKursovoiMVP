@@ -7,6 +7,7 @@ import ui.smartpro.geekbrainskursovoimvp.data.NetworkEntity
 import ui.smartpro.geekbrainskursovoimvp.data.NetworksItem
 import ui.smartpro.geekbrainskursovoimvp.data.NetworksItemEntity
 import ui.smartpro.geekbrainskursovoimvp.data.StationsItem
+import ui.smartpro.geekbrainskursovoimvp.data.entities.AllIdEntity
 
 interface CashData {
 
@@ -35,4 +36,15 @@ interface CashData {
      * @Insert Item Id
      */
     fun rewriteItemsStationsIntoDB(id: String, networkEntity: List<StationsItem>): Single<List<NetworkEntity>>?
+
+    /**
+     *  request all items Id from db
+     */
+    fun getAllIdItems(): Observable<List<AllIdEntity>>
+
+    /**
+     * @Delete and @Insert Items
+     */
+
+    fun rewriteAllListIntoDB(networksItem: List<AllIdEntity>): Single<List<AllIdEntity>>?
 }

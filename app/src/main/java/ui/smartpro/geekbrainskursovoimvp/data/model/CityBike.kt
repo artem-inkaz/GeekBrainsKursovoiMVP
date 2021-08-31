@@ -3,7 +3,7 @@ package ui.smartpro.geekbrainskursovoimvp.data.model
 import ui.smartpro.geekbrainskursovoimvp.data.NetworksItemEntity
 
 data class CityBike(
-        val id: String? = null,
+        var id: String? = null,
         val name: String? = null,
 //    val company: List<String?>? = null,
         val country: String? = null,

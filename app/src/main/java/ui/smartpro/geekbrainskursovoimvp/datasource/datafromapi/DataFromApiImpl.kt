@@ -4,6 +4,7 @@ import io.reactivex.Single
 import ui.smartpro.geekbrainskursovoimvp.api.Api
 import ui.smartpro.geekbrainskursovoimvp.data.BikeIdResponse
 import ui.smartpro.geekbrainskursovoimvp.data.Response
+import ui.smartpro.geekbrainskursovoimvp.data.response.AllIdResponse
 import javax.inject.Inject
 
 class DataFromApiImpl @Inject constructor(
@@ -18,4 +19,9 @@ class DataFromApiImpl @Inject constructor(
             api
                     .getCityBikeId(bikeId)
     //           .toMaybe()
+    override fun getAllId(): Single<AllIdResponse> =
+        api
+                .geAllBikesId()
+
+
 }
