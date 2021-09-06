@@ -26,7 +26,6 @@ class BikeItemFragment : AbsFragment(fragment_bike_item), BikeView, BikeAdapter.
     companion object Factory {
         private const val ARG_BIKE_ID = "arg_bike_id"
 
-        @JvmStatic
         fun newInstance(param1: String): Fragment =
                 BikeItemFragment()
                         .arguments(ARG_BIKE_ID to param1)
@@ -42,7 +41,6 @@ class BikeItemFragment : AbsFragment(fragment_bike_item), BikeView, BikeAdapter.
     @Inject
     lateinit var repository: Repository
 
-    @Suppress("unused")
     private val presenter: BikePresenter by moxyPresenter {
         BikePresenter(
                 bikeId = bikeId,

@@ -9,4 +9,5 @@
     <string name="normalbikes">Обычные вело</string>
     <string name="ebikes">Электро байк</string>
     <string name="slots">Количество мест</string>
+    <string name="filtered">Фильтровать</string>
 </resources>

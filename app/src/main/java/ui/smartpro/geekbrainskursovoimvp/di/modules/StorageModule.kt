@@ -4,21 +4,24 @@ import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
+import ui.smartpro.geekbrainskursovoimvp.data.Database
+import javax.inject.Singleton
 
 @Module
 class StorageModule {
 
+    @Singleton
     @Persisted
     @Provides
-    fun provideDatabaseStorage(context: Context): ui.smartpro.geekbrainskursovoimvp.data.Database =
-            Room.databaseBuilder(context, ui.smartpro.geekbrainskursovoimvp.data.Database::class.java, "citybikes.db")
-//            .addMigrations(GitHub1to2Migration, GitHub2to3Migration)
+    fun provideDatabaseStorage(context: Context): Database =
+            Room.databaseBuilder(context, Database::class.java, "citybikes.db")
                     .build()
 
+    @Singleton
     @InMemory
     @Provides
-    fun provideInMemoryStorage(context: Context): ui.smartpro.geekbrainskursovoimvp.data.Database =
-            Room.inMemoryDatabaseBuilder(context, ui.smartpro.geekbrainskursovoimvp.data.Database::class.java)
+    fun provideInMemoryStorage(context: Context): Database =
+            Room.inMemoryDatabaseBuilder(context, Database::class.java)
                     .fallbackToDestructiveMigration()
                     .build()
 }

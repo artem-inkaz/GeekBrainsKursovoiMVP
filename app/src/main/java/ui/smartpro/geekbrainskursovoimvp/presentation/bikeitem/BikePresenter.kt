@@ -27,7 +27,6 @@ class BikePresenter(
                                 viewState::showBike,
                                 viewState::showError
                         )
-
     }
 
     override fun onDestroy() {

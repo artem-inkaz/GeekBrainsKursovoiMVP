@@ -15,9 +15,6 @@ interface Api {
 
     /** http://api.citybik.es/v2/networks */
 
-//    @GET("v2/networks")
-//    fun geCityBikes(): Single<List<NetworksItem>>
-
     @GET("v2/networks")
     fun geCityBikes(): Single<Response>
 
@@ -25,9 +22,6 @@ interface Api {
 
     @GET("v2/networks/{network_id}")
     fun getCityBikeId(@Path("network_id") id: String): Single<BikeIdResponse>
-
-    //    @GET("v2/networks/{network_id}")
-    fun getBikeShref(@Url href: String): Single<BikeIdResponse>
 
     /** https://api.citybik.es/v2/networks?fields=id */
 

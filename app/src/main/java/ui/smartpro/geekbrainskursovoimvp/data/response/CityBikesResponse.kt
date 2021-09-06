@@ -13,9 +13,6 @@ data class NetworksItem(
 		@SerializedName("name")
 		val name: String? = null,
 
-//	@SerializedName("company")
-//	val company: List<String?>? = null,
-
 		@SerializedName("location")
 		val location: Location? = null,
 
@@ -43,7 +40,3 @@ data class Location(
 		@SerializedName("longitude")
 		val longitude: Double? = null,
 )
-//{
-//		val latLng: LatLng
-//		get() = LatLng(latitude, longitude)
-//}
