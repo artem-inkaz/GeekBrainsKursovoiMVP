@@ -4,7 +4,6 @@ import ui.smartpro.geekbrainskursovoimvp.data.NetworkEntity
 
 data class CityBikeId(
         val id: String? = null,
-//    val name: String? = null,
         val freeBikes: Int? = null,
         val emptySlots: Int? = null,
         val timestamp: String? = null,
@@ -18,7 +17,6 @@ data class CityBikeId(
         fun map(network: NetworkEntity?) {
             CityBikeId(
                     network!!.id,
-//            network.name,
                     network.freeBikes!!,
                     network.emptySlots!!,
                     network.timestamp!!,

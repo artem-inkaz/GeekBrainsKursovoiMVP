@@ -1,7 +1,5 @@
 package ui.smartpro.geekbrainskursovoimvp.data
 
-import android.content.Context
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import ui.smartpro.geekbrainskursovoimvp.data.dao.AllIdDao
 import ui.smartpro.geekbrainskursovoimvp.data.dao.BikeIdDao
@@ -20,18 +18,4 @@ abstract class Database : RoomDatabase() {
     abstract val cityBikeDao: CityBikeDao
     abstract val bikeIdDao: BikeIdDao
     abstract val allIdDao: AllIdDao
-
-    companion object {
-        private const val DB_NAME = "database.db"
-        private var instance: Database? = null
-        fun getInstance() = instance
-                ?: throw RuntimeException("Database has not been created. Please call create(context)")
-
-        fun create(context: Context?) {
-            if (instance == null) {
-                instance = Room.databaseBuilder(context!!, Database::class.java, DB_NAME)
-                        .build()
-            }
-        }
-    }
 }

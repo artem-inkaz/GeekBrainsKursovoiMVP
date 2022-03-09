@@ -13,3 +13,6 @@ annotation class InMemory
 
 @Qualifier
 annotation class Persisted
+
+@Qualifier
+annotation class Instance

@@ -1,5 +1,6 @@
 package ui.smartpro.geekbrainskursovoimvp.presentation.abs
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import com.github.terrakok.cicerone.NavigatorHolder
@@ -29,37 +30,15 @@ class MainActivity : AbsActivity() {
         navigatorHolder.setNavigator(navigator)
     }
 
-    val disposables = CompositeDisposable()
-
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
 
         savedInstanceState ?: router.newRootScreen(BikesScreen)
-
-        val connect =
-                NetworkStateObservable(this)
-                        .doOnNext { onNext(0, it) }
-                        .publish()
-
-        connect.connect()
-
-        disposables +=
-                connect.delay(20L, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-                        .subscribe { onNext(1, it) }
-    }
-
-    private fun onNext(no: Int, state: NetworkState) {
-        Toast.makeText(this, "$no: NetworkState: $state", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        disposables.dispose()
     }
 }

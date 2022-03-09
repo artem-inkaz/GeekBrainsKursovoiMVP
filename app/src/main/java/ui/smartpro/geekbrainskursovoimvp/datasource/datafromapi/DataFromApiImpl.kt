@@ -13,12 +13,11 @@ class DataFromApiImpl @Inject constructor(
     override fun getCityBikes(): Single<Response> =
             api
                     .geCityBikes()
-    //           .toObservable()
 
     override fun getCityBikeId(bikeId: String): Single<BikeIdResponse> =
             api
                     .getCityBikeId(bikeId)
-    //           .toMaybe()
+
     override fun getAllId(): Single<AllIdResponse> =
         api
                 .geAllBikesId()

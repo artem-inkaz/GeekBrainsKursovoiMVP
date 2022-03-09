@@ -10,10 +10,9 @@ data class AllIdEntity(
         @PrimaryKey
         @SerializedName("id")
         var id: String,
-){
+) {
         object Mapper {
-
-                fun map(networks: NetworksItem?)=
+                fun map(networks: NetworksItem?) =
                         AllIdEntity(
                                 networks!!.id!!
                         )

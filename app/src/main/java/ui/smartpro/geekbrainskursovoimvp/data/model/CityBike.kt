@@ -5,7 +5,6 @@ import ui.smartpro.geekbrainskursovoimvp.data.NetworksItemEntity
 data class CityBike(
         var id: String? = null,
         val name: String? = null,
-//    val company: List<String?>? = null,
         val country: String? = null,
         val city: String? = null,
         val latitude: Double? = null,
@@ -20,7 +19,6 @@ data class CityBike(
                 CityBike(
                         networksItem!!.id,
                         networksItem.name,
-//                networksItem.company,
                         networksItem.country,
                         networksItem.city,
                         networksItem.latitude,
@@ -34,7 +32,6 @@ data class CityBike(
                 CityBike(
                         networksItem.id,
                         networksItem.name,
-//                networksItem.company,
                         networksItem.country,
                         networksItem.city,
                         networksItem.latitude,
@@ -46,7 +43,6 @@ data class CityBike(
                 CityBike(
                         "networksItem.id",
                         "networksItem.name",
-//                networksItem.company,
                         "networksItem.country",
                         "networksItem.city",
                         0.0,

@@ -24,11 +24,6 @@ class RepositoryImpl @Inject constructor(
                             .toObservable()
             )
 
-    ////                        .map { it.networks }
-    ////                        .map { users -> users.map(CityBike.Mapper::map) }
-    //                        .map { response -> response.networks!!.map(CityBike.Mapper::map) }
-
-
     override fun getCityBikeId(id: String): Single<List<NetworkEntity>> =
             api
                     .getCityBikeId(id)

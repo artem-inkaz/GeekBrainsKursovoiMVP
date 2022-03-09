@@ -19,7 +19,6 @@ class ApiModule {
     @Named("api")
     @Provides
     fun provideBaseUrlProd(): String = "https://api.citybik.es/"
-    private val duration = 10000L
 
     @Provides
     fun provideGitHubApi(@Named("api") baseUrl: String): Api =
@@ -27,11 +26,6 @@ class ApiModule {
                     .baseUrl(baseUrl)
                     .client(
                             OkHttpClient.Builder()
-//                    .apply {
-//                    connectTimeout(duration, TimeUnit.MILLISECONDS)
-//                    readTimeout(duration, TimeUnit.MILLISECONDS)
-//                    writeTimeout(duration, TimeUnit.MILLISECONDS)
-//                }
                                     .addInterceptor(GitHubApiInterceptor)
                                     .addInterceptor(HttpLoggingInterceptor().apply {
                                         level = HttpLoggingInterceptor.Level.BODY
@@ -40,15 +34,10 @@ class ApiModule {
                     )
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
-                    //           .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
                     .build()
                     .create(Api::class.java)
 
     private val gson: Gson =
             GsonBuilder()
                     .create()
-
-    private val json = Json {
-        ignoreUnknownKeys = true
-    }
 }

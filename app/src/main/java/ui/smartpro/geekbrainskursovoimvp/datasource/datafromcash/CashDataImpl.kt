@@ -6,10 +6,12 @@ import io.reactivex.Single
 import ui.smartpro.geekbrainskursovoimvp.data.*
 import ui.smartpro.geekbrainskursovoimvp.data.entities.AllIdEntity
 import ui.smartpro.geekbrainskursovoimvp.di.modules.InMemory
+import ui.smartpro.geekbrainskursovoimvp.di.modules.Instance
+import ui.smartpro.geekbrainskursovoimvp.di.modules.Persisted
 import javax.inject.Inject
 
 class CashDataImpl @Inject constructor(
-        @InMemory private val database: Database,
+    @InMemory private val database: Database,
 ) : CashData {
 
     /** request items from db */
@@ -23,6 +25,7 @@ class CashDataImpl @Inject constructor(
             database
                     .cityBikeDao
                     .insert(toItemEntity(networksItem))
+
 
     /** del items and write new items data set again, include converter */
     override fun rewriteItemsListIntoDB(networksItem: List<NetworksItemEntity>): Single<List<NetworksItemEntity>>? =
@@ -39,7 +42,7 @@ class CashDataImpl @Inject constructor(
 
     /** add item by id data into db, include converter*/
     override fun rewriteItemsStationsIntoDB(id: String, networkEntity: List<StationsItem>)
-            : Single<List<NetworkEntity>>? =
+            : Single<List<NetworkEntity>> =
             database
                     .bikeIdDao
                     .insertAll(networkEntity.map { toItemIdEntity(id, it) })
@@ -73,14 +76,13 @@ class CashDataImpl @Inject constructor(
     /** converter item by id */
     private fun toItemIdEntity(itemId: String, network: StationsItem) = NetworkEntity(
             id = network.id!!,
-            stationId = network.id!!,
-//        name = network.name,
+            stationId = network.id,
             freeBikes = network.freeBikes,
             emptySlots = network.emptySlots,
             timestamp = network.timestamp,
             normalBikes = network.extra!!.normalBikes,
-            ebikes = network.extra!!.ebikes,
-            slots = network.extra!!.slots,
+            ebikes = network.extra.ebikes,
+            slots = network.extra.slots,
             shrefId = itemId
     )
 }

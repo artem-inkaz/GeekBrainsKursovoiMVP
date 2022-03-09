@@ -2,6 +2,7 @@ package ui.smartpro.geekbrainskursovoimvp.di.modules
 
 import dagger.Binds
 import dagger.Module
+import dagger.Reusable
 import dagger.android.ContributesAndroidInjector
 import ui.smartpro.geekbrainskursovoimvp.datasource.datafromapi.DataFromApi
 import ui.smartpro.geekbrainskursovoimvp.datasource.datafromapi.DataFromApiImpl
@@ -28,7 +29,7 @@ interface UsersModule {
     @ContributesAndroidInjector
     fun bindBikeItemFragment(): BikeItemFragment
 
-    @Singleton
+    @Reusable
     @Binds
     fun bindRepository(repository: RepositoryImpl): Repository
     @Binds
