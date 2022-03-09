@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_container"
+    android:background="#DF3B88"
+    android:layout_width="match_parent"
+    android:layout_height="75dp">
+
+    <TextView
+        android:id="@+id/id_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        tools:text="id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/city_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        tools:text="city"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_TV"/>
+
+    <TextView
+        android:id="@+id/name_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        tools:text="name"
+        app:layout_constraintStart_toEndOf="@id/id_TV"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/coordinat_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="25dp"
+        tools:text="coordinats"
+        app:layout_constraintStart_toEndOf="@id/city_TV"
+        app:layout_constraintTop_toBottomOf="@id/name_TV"/>
+
+    <TextView
+        android:id="@+id/company_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        tools:text="company"
+        app:layout_constraintStart_toEndOf="@id/name_TV"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/country_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        tools:text="country"
+        app:layout_constraintStart_toEndOf="@id/company_TV"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
