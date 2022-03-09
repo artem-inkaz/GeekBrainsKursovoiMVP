@@ -1,6 +1,6 @@
 package ui.smartpro.geekbrainskursovoimvp.data.model
 
-import ui.smartpro.geekbrainskursovoimvp.data.NetworksItem
+import ui.smartpro.geekbrainskursovoimvp.data.NetworksItemEntity
 
 data class CityBike (
     val id: String? = null,
@@ -16,19 +16,35 @@ data class CityBike (
 
     object Mapper {
 
-        fun map(networksItem: NetworksItem?) =
+        fun map(networksItem: NetworksItemEntity?) =
             CityBike(
                 networksItem!!.id,
                 networksItem.name,
 //                networksItem.company,
-                networksItem.location!!.country,
-                networksItem.location.city,
-                networksItem.location.latitude,
-                networksItem.location.longitude,
+                networksItem.country,
+                networksItem.city,
+                networksItem.latitude,
+                networksItem.longitude,
                 networksItem.source,
                 networksItem.href
             )
     }
+
+//    object Mapper {
+//
+//        fun map(networksItem: NetworksItemEntity?) =
+//                CityBike(
+//                        networksItem!!.id,
+//                        networksItem.name,
+////                networksItem.company,
+//                        networksItem.location!!.country,
+//                        networksItem.location.city,
+//                        networksItem.location.latitude,
+//                        networksItem.location.longitude,
+//                        networksItem.source,
+//                        networksItem.href
+//                )
+//    }
 
 //    private fun encode(){
 //        val str: String

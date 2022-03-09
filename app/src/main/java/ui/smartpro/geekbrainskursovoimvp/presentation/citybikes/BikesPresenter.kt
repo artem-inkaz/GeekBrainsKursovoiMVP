@@ -6,6 +6,7 @@ import io.reactivex.rxkotlin.plusAssign
 import moxy.MvpPresenter
 import ui.smartpro.geekbrainskursovoimvp.data.model.CityBike
 import ui.smartpro.geekbrainskursovoimvp.datasource.repository.Repository
+import ui.smartpro.geekbrainskursovoimvp.presentation.bikeitem.BikeScreen
 import ui.smartpro.geekbrainskursovoimvp.scheduler.Schedulers
 
 class BikesPresenter(
@@ -22,8 +23,8 @@ class BikesPresenter(
                         .getCityBikes()
                         .observeOn(schedulers.background())
 //                        .map { it.networks }
-//                        .map { users -> users.map(CityBike.Mapper::map) }
-                        .map { response -> response.networks!!.map(CityBike.Mapper::map) }
+                        .map { users -> users.map(CityBike.Mapper::map) }
+//                        .map { response -> response.networks!!.map(CityBike.Mapper::map) }
                         .observeOn(schedulers.main())
                         .subscribeOn(schedulers.background())
                         .subscribe(
@@ -33,7 +34,7 @@ class BikesPresenter(
     }
 
     fun displayItemBike(bike: CityBike) {
-//       router.navigateTo(BikeScreen(bike.id!!))
+      router.navigateTo(BikeScreen(bike.id!!))
     }
 
     override fun onDestroy() {

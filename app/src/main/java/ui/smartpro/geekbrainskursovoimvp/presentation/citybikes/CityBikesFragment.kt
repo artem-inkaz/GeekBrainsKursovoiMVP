@@ -11,6 +11,7 @@ import ui.smartpro.geekbrainskursovoimvp.data.model.CityBike
 import ui.smartpro.geekbrainskursovoimvp.databinding.FragmentCityBikesBinding
 import ui.smartpro.geekbrainskursovoimvp.datasource.repository.Repository
 import ui.smartpro.geekbrainskursovoimvp.presentation.abs.AbsFragment
+import ui.smartpro.geekbrainskursovoimvp.presentation.citybikes.adapter.BikeAdapter
 import ui.smartpro.geekbrainskursovoimvp.presentation.citybikes.adapter.BikesAdapter
 import ui.smartpro.geekbrainskursovoimvp.scheduler.Schedulers
 import javax.inject.Inject

@@ -27,12 +27,12 @@ interface Api {
      */
 
     @GET("v2/networks/{network_id}")
-    fun getCityBikeId(@Path("network_id") id: String): Single<NetworksItem>
+    fun getCityBikeId(@Path("network_id") id: String): Single<BikeIdResponse>
 
     @GET("v2/networks/{network_id}")
-    fun getCityBikId(@Path("network_id") id: String): Single<Network>
+    fun getCityBikId(@Path("network_id") id: String): Single<BikeIdResponse>
 
 //    @GET("v2/networks/{network_id}")
-    fun getBikeShref(@Url href: String): Single<Network>
+    fun getBikeShref(@Url href: String): Single<BikeIdResponse>
 
 }
