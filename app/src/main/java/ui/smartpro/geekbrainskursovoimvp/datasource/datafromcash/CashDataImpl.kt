@@ -4,6 +4,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import ui.smartpro.geekbrainskursovoimvp.data.*
+import ui.smartpro.geekbrainskursovoimvp.data.entities.AllIdEntity
 import ui.smartpro.geekbrainskursovoimvp.di.modules.InMemory
 import javax.inject.Inject
 
@@ -43,6 +44,18 @@ class CashDataImpl @Inject constructor(
                     .bikeIdDao
                     .insertAll(networkEntity.map { toItemIdEntity(id, it) })
                     .andThen(getItemById(id).firstOrError())
+
+    override fun getAllIdItems(): Observable<List<AllIdEntity>> =
+        database
+                .allIdDao
+                .fetchAllIdItems()
+
+    override fun rewriteAllListIntoDB(networksItem: List<AllIdEntity>): Single<List<AllIdEntity>>? =
+            database
+                    .allIdDao
+                    .insertAll(networksItem)
+                    .andThen(getAllIdItems().firstOrError())
+
 
     /** converter items */
     private fun toItemEntity(networksItem: NetworksItem) = NetworksItemEntity(

@@ -5,6 +5,7 @@ import io.reactivex.Single
 import io.reactivex.rxkotlin.cast
 import ui.smartpro.geekbrainskursovoimvp.data.NetworkEntity
 import ui.smartpro.geekbrainskursovoimvp.data.NetworksItemEntity
+import ui.smartpro.geekbrainskursovoimvp.data.entities.AllIdEntity
 import ui.smartpro.geekbrainskursovoimvp.datasource.datafromapi.DataFromApi
 import ui.smartpro.geekbrainskursovoimvp.datasource.datafromcash.CashData
 import javax.inject.Inject
@@ -42,6 +43,16 @@ class RepositoryImpl @Inject constructor(
                             .map { response -> NetworksItemEntity.Mapper::filter.let { response.networks!!.map(it) } }
                             .filter { response -> response[7].equals(null) }
                             .cast<List<NetworksItemEntity>>()
+                            .toObservable()
+            )
+
+    override fun getAllIdBikes(): Observable<List<AllIdEntity>> =
+            Observable.merge(
+                    cache.getAllIdItems(),
+                    api
+                            .getAllId()
+                            .map { response -> AllIdEntity.Mapper::map.let { response.networks!!.map (it) } }
+                            .flatMap (cache::rewriteAllListIntoDB)
                             .toObservable()
             )
 }

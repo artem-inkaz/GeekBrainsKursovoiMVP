@@ -53,6 +53,11 @@ class BikesPresenter(
         router.navigateTo(BikeScreen(bike.id!!))
     }
 
+    fun displayItemIdBike(id: String,bike: CityBike) {
+            bike.id =id
+        router.navigateTo(BikeScreen(bike.id!!))
+    }
+
     override fun onDestroy() {
         disposables.dispose()
     }
