@@ -10,12 +10,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import moxy.ktx.moxyPresenter
 import ui.smartpro.geekbrainskursovoimvp.R.layout.fragment_bike_item
 import ui.smartpro.geekbrainskursovoimvp.data.NetworkEntity
-import ui.smartpro.geekbrainskursovoimvp.data.model.CityBikeId
 import ui.smartpro.geekbrainskursovoimvp.databinding.FragmentBikeItemBinding
 import ui.smartpro.geekbrainskursovoimvp.datasource.repository.Repository
 import ui.smartpro.geekbrainskursovoimvp.ext.arguments
 import ui.smartpro.geekbrainskursovoimvp.presentation.abs.AbsFragment
-import ui.smartpro.geekbrainskursovoimvp.presentation.citybikes.BikesPresenter
 import ui.smartpro.geekbrainskursovoimvp.presentation.citybikes.adapter.BikeAdapter
 import ui.smartpro.geekbrainskursovoimvp.scheduler.Schedulers
 import java.time.LocalDate
@@ -23,14 +21,15 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 import javax.inject.Inject
 
-class BikeItemFragment : AbsFragment(fragment_bike_item),BikeView, BikeAdapter.Delegate {
+class BikeItemFragment : AbsFragment(fragment_bike_item), BikeView, BikeAdapter.Delegate {
 
     companion object Factory {
         private const val ARG_BIKE_ID = "arg_bike_id"
+
         @JvmStatic
         fun newInstance(param1: String): Fragment =
-            BikeItemFragment()
-                    .arguments(ARG_BIKE_ID to param1)
+                BikeItemFragment()
+                        .arguments(ARG_BIKE_ID to param1)
     }
 
     private val bikeId: String by lazy {
@@ -63,7 +62,7 @@ class BikeItemFragment : AbsFragment(fragment_bike_item),BikeView, BikeAdapter.D
     @RequiresApi(Build.VERSION_CODES.O)
     fun convertLongToTime(time: String): String {
         val inputFormatter =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH)
+                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH)
         val outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyy", Locale.ENGLISH)
         val date = LocalDate.parse(time, inputFormatter)
         val formattedDate = outputFormatter.format(date)
@@ -72,6 +71,7 @@ class BikeItemFragment : AbsFragment(fragment_bike_item),BikeView, BikeAdapter.D
 
     override fun showBike(bikeId: List<NetworkEntity>) {
         bikeAdapter.submitList(bikeId)
+        viewBinding.idTV.text = bikeId[0].id
     }
 
     override fun showError(error: Throwable) {
@@ -79,6 +79,6 @@ class BikeItemFragment : AbsFragment(fragment_bike_item),BikeView, BikeAdapter.D
     }
 
     override fun onItemPicked(bike: NetworkEntity) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(), "Функция в разработке", Toast.LENGTH_LONG).show()
     }
 }

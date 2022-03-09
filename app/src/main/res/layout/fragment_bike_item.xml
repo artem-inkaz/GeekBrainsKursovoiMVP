@@ -4,46 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_launcher"
+    android:background="#537585"
     tools:context=".presentation.bikeitem.BikeItemFragment">
 
     <TextView
-        android:id="@+id/id_TV"
+        android:id="@+id/id_Title"
+        style="@style/text_title_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text=""
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="ID"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="id" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/id_station"
+        android:id="@+id/id_TV"
+        style="@style/text_data_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        android:text=""
-        app:layout_constraintStart_toEndOf="@id/id_TV"
+        android:layout_margin="10dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/id_Title"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="id_station" />
+        tools:text="id" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="141dp" />
+        app:layout_constraintGuide_begin="56dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cityBikeDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:background="@color/black"
+        android:background="#D0DDC1"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/bike_detail"
-        app:layout_constraintTop_toTopOf="@id/guideline2"/>
+        app:layout_constraintTop_toTopOf="@id/guideline2"
+        tools:listitem="@layout/bike_detail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

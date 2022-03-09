@@ -1,5 +1,7 @@
 package ui.smartpro.geekbrainskursovoimvp.presentation.citybikes
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,12 +13,14 @@ import ui.smartpro.geekbrainskursovoimvp.data.model.CityBike
 import ui.smartpro.geekbrainskursovoimvp.databinding.FragmentCityBikesBinding
 import ui.smartpro.geekbrainskursovoimvp.datasource.repository.Repository
 import ui.smartpro.geekbrainskursovoimvp.presentation.abs.AbsFragment
-import ui.smartpro.geekbrainskursovoimvp.presentation.citybikes.adapter.BikeAdapter
 import ui.smartpro.geekbrainskursovoimvp.presentation.citybikes.adapter.BikesAdapter
 import ui.smartpro.geekbrainskursovoimvp.scheduler.Schedulers
+import ui.smartpro.geekbrainskursovoimvp.source.Source
+import ui.smartpro.geekbrainskursovoimvp.source.SourcePresenter
+import ui.smartpro.geekbrainskursovoimvp.source.SourceView
 import javax.inject.Inject
 
-class CityBikesFragment : AbsFragment(fragment_city_bikes), BikesView, BikesAdapter.Delegate {
+class CityBikesFragment : AbsFragment(fragment_city_bikes), BikesView, BikesAdapter.Delegate, SourceView {
 
     companion object {
         @JvmStatic
@@ -36,10 +40,20 @@ class CityBikesFragment : AbsFragment(fragment_city_bikes), BikesView, BikesAdap
     @Inject
     lateinit var repository: Repository
 
+    @Inject
+    lateinit var source: Source
+
     private val presenter: BikesPresenter by moxyPresenter {
         BikesPresenter(
                 bikeRepository = repository,
                 router = router,
+                schedulers = schedulers
+        )
+    }
+
+    private val presenterSource: SourcePresenter by moxyPresenter {
+        SourcePresenter(
+                source = source,
                 schedulers = schedulers
         )
     }
@@ -51,10 +65,30 @@ class CityBikesFragment : AbsFragment(fragment_city_bikes), BikesView, BikesAdap
         super.onViewCreated(view, savedInstanceState)
 
         viewBinding.cityBikes.adapter = bikesAdapter
+
+        viewBinding.filterBtn.setOnClickListener {
+            presenter.filterSource()
+
+        }
     }
 
     override fun showBikes(bikes: List<CityBike>) {
         bikesAdapter.submitList(bikes)
+    }
+
+    override fun showSourceBikes(bikes: List<CityBike>) {
+        bikesAdapter.submitList(bikes)
+    }
+
+    override fun showContent(uri: String?) {
+        startActivity(Intent(Intent.ACTION_VIEW).apply {
+            try {
+                data = Uri.parse(uri)
+            } catch (e: Throwable) {
+                Toast.makeText(requireContext(), "${e}", Toast.LENGTH_LONG).show()
+            }
+
+        })
     }
 
     override fun showError(error: Throwable) {
@@ -63,5 +97,9 @@ class CityBikesFragment : AbsFragment(fragment_city_bikes), BikesView, BikesAdap
 
     override fun onItemPicked(bike: CityBike) {
         presenter.displayItemBike(bike)
+    }
+
+    override fun onSourcePicked(bike: CityBike) {
+        presenterSource.sourceOpen(bike.source.toString())
     }
 }

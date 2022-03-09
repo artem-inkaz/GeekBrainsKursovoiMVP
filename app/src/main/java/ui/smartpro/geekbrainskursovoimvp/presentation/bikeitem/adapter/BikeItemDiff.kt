@@ -3,7 +3,6 @@ package ui.smartpro.geekbrainskursovoimvp.presentation.citybikes.adapter
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import ui.smartpro.geekbrainskursovoimvp.data.NetworkEntity
-import ui.smartpro.geekbrainskursovoimvp.data.model.CityBike
 
 object BikeItemDiff : DiffUtil.ItemCallback<NetworkEntity>() {
 

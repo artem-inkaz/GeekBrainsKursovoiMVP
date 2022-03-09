@@ -10,9 +10,6 @@ import ui.smartpro.geekbrainskursovoimvp.data.StationsItem
 @Dao
 interface BikeIdDao {
 
-//    @Query("SELECT * FROM bike_id WHERE shref_Id LIKE  :shrefId")
-//    fun getBikeId(shrefId: String): Single<NetworkEntity>
-
     @Query("SELECT * FROM bike_id WHERE shref_Id LIKE  :shrefId")
     fun getBikeId(shrefId: String): Observable<List<NetworkEntity>>
 

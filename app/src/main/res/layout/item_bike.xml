@@ -1,70 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_container"
-    android:background="#DF3B88"
     android:layout_width="match_parent"
-    android:layout_height="75dp"
-    android:layout_margin="15dp">
+    android:layout_height="175dp"
+    android:layout_margin="15dp"
+    android:background="#75636C">
+
+    <TextView
+        android:id="@+id/id_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:text="ID Компании"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="7dp" />
 
     <TextView
         android:id="@+id/id_TV"
+        style="@style/text_data_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        tools:text="id"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/id_Title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="id" />
 
     <TextView
-        android:id="@+id/city_TV"
+        android:id="@+id/name_Title"
+        style="@style/text_title_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        tools:text="city"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:text="Название"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_TV"/>
+        app:layout_constraintTop_toBottomOf="@id/id_Title" />
 
     <TextView
         android:id="@+id/name_TV"
+        style="@style/text_data_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
-        tools:text="name"
-        app:layout_constraintStart_toEndOf="@id/id_TV"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toEndOf="@+id/name_Title"
+        app:layout_constraintTop_toBottomOf="@id/id_TV"
+        tools:text="name" />
 
     <TextView
-        android:id="@+id/coordinat_TV"
+        android:id="@+id/company_Title"
+        style="@style/text_title_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="25dp"
-        tools:text="coordinats"
-        app:layout_constraintStart_toEndOf="@id/city_TV"
-        app:layout_constraintTop_toBottomOf="@id/name_TV"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Компания"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_Title" />
 
     <TextView
         android:id="@+id/company_TV"
+        style="@style/text_data_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="15dp"
-        tools:text="company"
-        app:layout_constraintStart_toEndOf="@id/name_TV"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/company_Title"
+        app:layout_constraintTop_toBottomOf="@id/name_TV"
+        tools:text="company" />
+
+
+    <TextView
+        android:id="@+id/country_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Страна"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/company_TV" />
 
     <TextView
         android:id="@+id/country_TV"
+        style="@style/text_data_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="15dp"
-        tools:text="country"
-        app:layout_constraintStart_toEndOf="@id/company_TV"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@id/country_Title"
+        app:layout_constraintTop_toBottomOf="@id/company_TV"
+        tools:text="country" />
+
+    <TextView
+        android:id="@+id/city_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Город"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/country_Title" />
+
+    <TextView
+        android:id="@+id/city_TV"
+        style="@style/text_data_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@id/city_Title"
+        app:layout_constraintTop_toBottomOf="@id/country_TV"
+        tools:text="city" />
+
+    <TextView
+        android:id="@+id/coordinat_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="36dp"
+        android:text="Координаты"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/coordinat_TV"
+        style="@style/text_data_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coordinat_Title"
+        tools:text="coordinats" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/source_Btn"
+        style="@style/black_rounded_button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/teal_200"
+        android:text="Сайт"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coordinat_TV"
+        app:layout_constraintVertical_bias="0.724" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

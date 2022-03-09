@@ -1,111 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detail_container"
-    android:layout_height="100dp"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
     android:layout_margin="15dp"
-    android:background="#DFDC25"
+    android:background="#8C5D4E"
     tools:context=".presentation.bikeitem.BikeItemFragment">
 
     <TextView
+        android:id="@+id/id_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/uid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/id_TV"
+        style="@style/text_data_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text=""
-        tools:text="id"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/id_Title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="id" />
+
+    <TextView
+        android:id="@+id/freeBikes_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/freebikes"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/id_station"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text=""
-        tools:text="id_station"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_TV"/>
-
-    <TextView
-        android:id="@+id/name_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
-        android:text=""
-        tools:text="name"
-        app:layout_constraintStart_toEndOf="@id/id_TV"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/timestamp_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="25dp"
-        android:text=""
-        tools:text="timestamp"
-        app:layout_constraintStart_toEndOf="@id/id_station"
-        app:layout_constraintTop_toBottomOf="@id/name_TV"/>
-
-    <TextView
-        android:id="@+id/normalBikes_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="25dp"
-        android:text=""
-        tools:text="normalBikes"
-        app:layout_constraintStart_toEndOf="@id/timestamp_TV"
-        app:layout_constraintTop_toBottomOf="@id/freeBikes_TV"/>
+        app:layout_constraintTop_toBottomOf="@+id/id_Title" />
 
     <TextView
         android:id="@+id/freeBikes_TV"
+        style="@style/text_data_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="15dp"
-        android:text=""
-        tools:text="freeBikes_TV"
-        app:layout_constraintStart_toEndOf="@id/name_TV"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="37dp"
+        app:layout_constraintStart_toEndOf="@+id/freeBikes_Title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="freeBikes_TV" />
+
+    <TextView
+        android:id="@+id/emptySlots_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/emptyslots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/freeBikes_Title" />
 
     <TextView
         android:id="@+id/emptySlots_TV"
+        style="@style/text_data_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/emptySlots_Title"
+        app:layout_constraintTop_toBottomOf="@+id/freeBikes_TV"
+        tools:text="emptySlots_TV" />
+
+    <TextView
+        android:id="@+id/timestamp_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/timestamp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emptySlots_Title" />
+
+    <TextView
+        android:id="@+id/timestamp_TV"
+        style="@style/text_data_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@id/timestamp_Title"
+        app:layout_constraintTop_toBottomOf="@+id/emptySlots_TV"
+        tools:text="timestamp" />
+
+    <TextView
+        android:id="@+id/normalBikes_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/normalbikes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timestamp_Title" />
+
+    <TextView
+        android:id="@+id/normalBikes_TV"
+        style="@style/text_data_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/normalBikes_Title"
+        app:layout_constraintTop_toBottomOf="@+id/timestamp_TV"
+        tools:text="normalBikes" />
+
+    <TextView
+        android:id="@+id/ebikes_Title"
+        style="@style/text_title_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
-        android:text=""
-        tools:text="emptySlots_TV"
-        app:layout_constraintStart_toEndOf="@id/freeBikes_TV"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:text="@string/ebikes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/normalBikes_Title" />
 
     <TextView
         android:id="@+id/ebikes_TV"
+        style="@style/text_data_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-
+        android:layout_marginStart="35dp"
         android:layout_marginTop="8dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timestamp_TV"
+        app:layout_constraintStart_toEndOf="@+id/ebikes_Title"
+        app:layout_constraintTop_toBottomOf="@+id/normalBikes_TV"
         tools:text="ebikes_TV" />
 
     <TextView
-        android:id="@+id/slots_TV"
+        android:id="@+id/slots_Title"
+        style="@style/text_title_only"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="25dp"
-        android:text=""
-        tools:text="slots_TV"
-        app:layout_constraintStart_toEndOf="@id/normalBikes_TV"
-        app:layout_constraintTop_toBottomOf="@id/emptySlots_TV"/>
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/slots"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/slots_TV"
+        style="@style/text_data_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slots_Title"
+        tools:text="slots_TV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
